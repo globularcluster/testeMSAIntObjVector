@@ -16,21 +16,23 @@ void ofApp::setup() {
 
     //if I do this inside a previous 'for', not work
     for (int i = 0; i < imageVector.size(); i++) {
-        Button Button;
-        Button.content = &imageVector[i];
+        Button button;
+        buttonVector.push_back( button );
 
-        Button.setPosition((i * 70) + 40, 100);
-        Button.setSize(50, 40);
-        Button.enableMouseEvents();	
-
-        buttonVector.push_back( Button );
+        buttonVector.back().content = &imageVector[i];
+        buttonVector.back().i = i;
+        buttonVector.back().setPosition( i*30, i*10);    
+        buttonVector.back().setSize(100, 80);
+        buttonVector.back().enableMouseEvents();
+        buttonVector.back().enableAppEvents();
     }
 
-    // a single Button works
-    testImg.load("images/img1.jpg");
-    testButton.content = &testImg;
-    testButton.set(300, 300, 110, 300);
-    testButton.enableMouseEvents();
+    // // a single Button works
+    // testImg.load("images/img1.jpg");
+    // testButton.content = &testImg;
+    // testButton.set(300, 300, 110, 300); // x, y, w, h
+    // testButton.enableAppEvents();
+    // testButton.enableMouseEvents();
 
 }
 

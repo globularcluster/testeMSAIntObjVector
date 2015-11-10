@@ -6,22 +6,20 @@
 class Button : public ofxMSAInteractiveObject {
   public:
   	ofBaseDraws	*content;
+  	int i;	// id, for print when draw
 
   	Button() {
   		content = NULL;
   	}
 
-    void setup() {
-        cout << "Button::setup()" << endl;
-        enableMouseEvents();
-        enableKeyEvents();
+    void update(){
+    	enableMouseEvents();
+    	enableKeyEvents();
     }
 
     void draw() { 
-    	// this does not work
-    	width = content->getWidth();  
-        height = content->getHeight();  
-        content->draw(x, y, 100, 70); // testButton.set() seems not change widht/height
+     // cout << i << endl;  
+        content->draw(x, y, width, height);
     }
 
     void onPress(int x, int y, int button){
@@ -53,6 +51,6 @@ class ofApp : public ofBaseApp{
 		vector<Button>  buttonVector;
 		vector<ofImage> imageVector;
 
-		Button testButton;
+        // Button testButton;
 		ofImage testImg;
 };
